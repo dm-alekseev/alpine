@@ -11,8 +11,9 @@ COPY blue.conf /etc/nginx/conf.d/
 COPY redblue.conf /etc/nginx/conf.d/
 COPY blue.html /usr/share/nginx/html/redblue/
 COPY red.html /usr/share/nginx/html/redblue/
+COPY redblue.html /usr/share/nginx/html/redblue/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-CMD  ["/bin/sh", "-l"]
+
 
 EXPOSE 80 83 84 
