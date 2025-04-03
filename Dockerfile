@@ -1,7 +1,7 @@
 FROM nginx:alpine-slim
-RUN mkdir -p /etc/nginx/certs 
-RUN mkdir -p /usr/share/nginx/html 
-RUN mkdir -p /usr/share/nginx/html/redblue
+RUN mkdir -p /etc/nginx/certs \ 
+             /usr/share/nginx/html \
+             /usr/share/nginx/html/redblue
 COPY alekseev.mywire.org.cert /etc/nginx/certs/
 COPY alekseev.mywire.org.key /etc/nginx/certs/
 COPY index.html /usr/share/nginx/html/index.html
