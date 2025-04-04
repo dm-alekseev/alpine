@@ -1,19 +1,19 @@
 FROM nginx:alpine-slim
 RUN mkdir -p /etc/nginx/certs \ 
              /usr/share/nginx/html \
-             /usr/share/nginx/html/redblue
-COPY alekseev.mywire.org.cert /etc/nginx/certs/
-COPY alekseev.mywire.org.key /etc/nginx/certs/
-COPY index.html /usr/share/nginx/html/index.html
-COPY index.html /usr/share/nginx/html/redblue/index.html
-COPY red.conf /etc/nginx/conf.d/
-COPY blue.conf /etc/nginx/conf.d/
-COPY redblue.conf /etc/nginx/conf.d/
-COPY blue.html /usr/share/nginx/html/redblue/blue.html
-COPY red.html /usr/share/nginx/html/redblue/red.html
-COPY redblue.html /usr/share/nginx/html/redblue/redblue.html
+             /usr/share/nginx/html/redblue \
+             /usr/share/nginx/html/content/ \
+             /usr/share/nginx/html/music/ \
+             /usr/share/nginx/html/secondserver 
+COPY certs/          /etc/nginx/certs/
+COPY conf/           /etc/nginx/conf.d/
+COPY redblue/        /usr/share/nginx/html/redblue/
+COPY ringt.mp3       /usr/share/nginx/html/music/
+COPY index.html      /usr/share/nginx/html/index.html
+
+
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
-EXPOSE 80 81 82 83 
+EXPOSE 80 81 82 83 84 
