@@ -1,7 +1,9 @@
 FROM nginx:alpine-slim
 
-COPY certs/   /etc/nginx/certs/
-COPY conf/    /etc/nginx/conf.d/
+WORKDIR /etc/nginx/
+
+COPY certs/   ./certs/
+COPY conf/    ./conf.d/
 COPY html/    /usr/share/nginx/html/
 
 CMD ["nginx", "-g", "daemon off;"]
