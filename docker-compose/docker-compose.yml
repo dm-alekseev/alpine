@@ -1,0 +1,43 @@
+services:
+  redblue:
+    build:
+      context: ./redblue
+      dockerfile: Dockerfile
+       ports:
+      - "82:82"
+  blue:
+    build:
+      context: ./red
+      dockerfile: Dockerfile
+       ports:
+      - "83:83"
+  red:
+    build:
+      context: ./blue
+      dockerfile: Dockerfile
+       ports:
+      - "84:84"
+
+  content:
+    build:
+      context: ./content
+      dockerfile: Dockerfile
+       ports:
+      - "81:81"
+
+  nginx:
+    image: nginx:stable-alpine-slim
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - redblue
+      - red
+      - blue  
+      - content
+      - music
+        
+networks:
+  default:
+    driver: bridge
