@@ -1,8 +1,9 @@
 services:
   nginx:
     build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: nginx_app
+    context: .
+    dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - '80:80'
       - "443:443"
