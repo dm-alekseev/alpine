@@ -11,4 +11,8 @@ stop:
 	docker stop $(CONTAINER_NAME)
 
 remove: 
-	docker rmi  $(IMAGE_NAME)	
+	docker rmi  $(IMAGE_NAME)
+
+logs:
+	docker logs $(CONTAINER_NAME)
+clean:  stop remove	
