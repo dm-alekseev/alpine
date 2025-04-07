@@ -15,4 +15,6 @@ remove:
 
 logs:
 	docker logs $(CONTAINER_NAME)
-clean:  stop remove	
+
+clean: 
+    stop remove	
