@@ -1,3 +1,8 @@
-#==   ===#
+#=====#
 docker build -t alpine .
-docker run --name alpine -p 80:80 -p 81:81 -p 83:83 -p 82:82 -p 84:84 alpine
+
+docker-compose up --build 
+
+echo "html conf certs" | xargs -n 1 docker volume create
+
+docker run  -p 80:80  --rm --name alpine -v conf:/etc/nginx/conf.d -v html:/usr/share/nginx/html -v certs:/etc/nginx/certs -p  443:443 alpine
