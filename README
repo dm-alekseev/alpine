@@ -15,3 +15,5 @@ RUN groupadd -r tom && useradd -g tom tom
 RUN chown -R tom:tom /my-app
 # переключиться на пользователя 
 USER tom
+
+Для сканирования можно воспользоваться встроенным в Docker сканером, базирующимся на Snyk  (docker scan ubuntu ) и Trivy 
