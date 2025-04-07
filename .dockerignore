@@ -1,5 +1,9 @@
 .gitignore
 Dockerfile
+LICENSE
+README.md
 docker-compose*
 .vs
 .vscode
+.env
+.cache
