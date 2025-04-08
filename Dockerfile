@@ -9,7 +9,7 @@ COPY certs/   ./certs/
 COPY conf/    ./conf.d/
 COPY html/    /usr/share/nginx/html/
 
-VOLUME ["/usr/share/nginx/html","/etc/nginx/conf.d/"]
+VOLUME ["/usr/share/nginx/html","/etc/nginx/conf.d/", "var/log/nginx/"]
 
 CMD ["nginx", "-g", "daemon off;"]
 

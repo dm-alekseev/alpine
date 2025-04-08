@@ -6,7 +6,25 @@ services:
       - ./certs:/etc/nginx/certs
       - ./conf:/etc/nginx/conf.d
       - ./html:/usr/share/nginx/html
+      - ./log:/var/log/nginx/
     ports:
       - "80:80"
       - "443:443"
     command: ["nginx", "-g", "daemon off;"]
+    networks:
+      - backend 
+  
+  shell:
+    image: bash
+    volumes:
+      - ./log:/var/log/nginx
+      - ./script:/usr/script/
+    command: ["/bin/sh", "/script.sh"]
+    depends: nginx 
+    networks:
+     - backend
+
+networks:
+  backend:
+    driver: bridge
+    
