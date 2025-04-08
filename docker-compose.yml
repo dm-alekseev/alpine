@@ -1,27 +1,28 @@
 services:
   nginx:
-    image: nginx:alpine
+    image: nginx:alpine-slim
     working_dir: /etc/nginx/
     volumes:
       - ./certs:/etc/nginx/certs
       - ./conf:/etc/nginx/conf.d
       - ./html:/usr/share/nginx/html
-      - ./log:/var/log/nginx
+      - ./log:/var/log/nginx/
     ports:
       - "80:80"
       - "443:443"
     command: ["nginx", "-g", "daemon off;"]
     networks:
-      - backend
- 
+      - backend 
+  
   shell:
-    image: alpine
+    image: bash
     volumes:
-      - ./log:/usr/logs
-      - ./script:/usr/script 
-    command: ["/bin/sh", "/usr/script/script.sh"]
+      - ./log:/var/log/nginx
+      - ./script:/usr/script/
+    command: ["/bin/sh", "/script.sh"]
+    depends: nginx 
     networks:
-     - backend 
+     - backend
 
 networks:
   backend:
