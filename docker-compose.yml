@@ -17,10 +17,10 @@ services:
   shell:
     image: bash
     volumes:
-      - ./log:/var/log/nginx
+      - ./log:/usr/log
       - ./script:/usr/script/
-    command: ["/bin/sh", "/script.sh"]
-    depends: nginx 
+    command: ["/bin/sh", "/usr/script/script.sh"]
+     
     networks:
      - backend
 
